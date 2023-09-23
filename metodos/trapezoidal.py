@@ -1,41 +1,26 @@
-import math
-import numpy as np
-import matplotlib.pyplot as plt
+import sympy as sp
 
-
-def metodo_trapezoidal(funcion, a, b, n):
-    
+def trapezoidal(func, a, b, n):
+ 
+    x = sp.symbols('x')
+    func_expr = sp.sympify(func)
     h = (b - a) / n
-    integral = 0.5 * (funcion(a) + funcion(b))
+    x_values = [a + i * h for i in range(n + 1)]
 
+    integral = (h / 2) * (func_expr.subs(x, x_values[0]) + func_expr.subs(x, x_values[n]))
     for i in range(1, n):
-        
-        x_i = a + i * h
-        integral += funcion(x_i)
+        integral += h * func_expr.subs(x, x_values[i])
 
-    integral *= h
-    return integral
+    return float(integral)
 
+if __name__ == "__main__":
 
-
-
-# función e^(x^4)
-def funcion(x):
-    return math.exp(x**4)
+    ecuacion = input("Ingresa la función en términos de 'x': ")
+    a = float(input("Ingresa el límite inferior 'a': "))
+    b = float(input("Ingresa el límite superior 'b': "))
+    n = int(input("Ingresa el número de subintervalos 'n': "))
 
 
-# intervalo y número de puntos 
-a = -1
-b = 1
-n = 1000
+    integral_aproximada = trapezoidal(ecuacion, a, b, n)
+    print(f"Aproximación de la integral definida: {integral_aproximada:.6f}")
 
-
-# valores de x en el intervalo
-x_values = np.linspace(a, b, n)
-
-# valores de y para la función
-y_values = [funcion(x) for x in x_values]
-
-# aplicando el método trapezoidal
-resultado = metodo_trapezoidal(funcion, a, b, n)
-print(f"Aproximación de la integral definida: {resultado}")
