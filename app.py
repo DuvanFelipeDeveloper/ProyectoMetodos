@@ -12,6 +12,7 @@ import metodos.punto_fijo as puntofijo
 import metodos.secante as secante
 import metodos.simpson as simpson
 import metodos.trapezoidal as trapezoidal
+import metodos.sedial as sedial
 
 
 app = Flask(__name__)
@@ -45,6 +46,23 @@ def metodojacobi():
             
             
             response=jacobi.jacobi(ecuacion,resultados,xi)
+            response_list = response.tolist() if isinstance(response, np.ndarray) else response
+            return jsonify({"response":response_list})
+        else:
+            return jsonify({'error': 'El campo "texto" es requerido'}), 400
+
+#sedial
+@app.route('/api/sedial', methods=['POST'])
+def metodojacobi():
+    if request.method == 'POST':
+        data = request.json  
+        if 'ecuacion' in data:
+            ecuacion = data['ecuacion']
+            resultados = data['resultados']
+            xi = data['xi']
+            
+            
+            response=sedial.gauss_seidel(ecuacion,resultados,xi)
             response_list = response.tolist() if isinstance(response, np.ndarray) else response
             return jsonify({"response":response_list})
         else:
