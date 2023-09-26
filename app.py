@@ -53,7 +53,7 @@ def metodojacobi():
 
 #sedial
 @app.route('/api/sedial', methods=['POST'])
-def metodojacobi():
+def metodosedial():
     if request.method == 'POST':
         data = request.json  
         if 'ecuacion' in data:
