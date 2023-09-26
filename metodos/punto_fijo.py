@@ -2,19 +2,19 @@ import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Función para ingresar la ecuación
+
 def ingresar_ecuacion(inputecuacion):
     ecuacion_texto = inputecuacion
     x = sp.symbols('x')
     ecuacion = sp.sympify(ecuacion_texto)
     return ecuacion, x
 
-# Función para encontrar despejes
+
 def encontrar_despejes(ecuacion, x):
     despejes = sp.solve(ecuacion, x)
     return despejes
 
-# Función para encontrar una aproximación inicial
+
 def encontrar_aprox_inicial(ecuacion, x, valor_inicial=0):
     if valor_inicial != 0:
         return valor_inicial
@@ -25,7 +25,7 @@ def encontrar_aprox_inicial(ecuacion, x, valor_inicial=0):
         valor_inicial = x_valores[np.argmin(np.abs(y_valores))]
         return valor_inicial
 
-# Función para aplicar el método de punto fijo a una ecuación
+
 def punto_fijo(ecuacion, x, valor_inicial, max_iter=100, tolerancia=1e-4):
     iteraciones = [0]
     aproximaciones = [valor_inicial]

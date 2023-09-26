@@ -20,7 +20,7 @@ def gauss_seidel(A, b, x0, tol=1e-6, max_iter=100):
     raise ValueError("El método de Gauss-Seidel no convergió después de {} iteraciones.".format(max_iter))
 
 if __name__ == "__main__":
-    # Ingresar la matriz de coeficientes, el vector de términos independientes y el vector de valores iniciales.
+   
     A = [[4, -1, 0, 0], [-1, 4, -1, 0], [0, -1, 4, -1], [0, 0, -1, 4]]
     b = [1, 1, 1, 1]
     x0 = [0, 0, 0, 0]

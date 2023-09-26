@@ -27,7 +27,7 @@ if __name__ == "__main__":
     x0 = float(input("Ingresa el primer valor inicial x0: "))
     x1 = float(input("Ingresa el segundo valor inicial x1: "))
 
-    # Llama a la función secante con los valores proporcionados.
+
     try:
         raiz_aproximada = secante(ecuacion, x0, x1)
         print(f"Aproximación de la raíz: {raiz_aproximada:.6f}")

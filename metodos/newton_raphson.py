@@ -20,8 +20,8 @@ def newton_raphson(func, x, xi, tol=1e-6, max_iter=100):
 
     raise ValueError("El método de Newton-Raphson no convergió.")
 
-# Ejemplo de uso:
+
 if __name__ == "__main__":
-    ecuacion = "x**3+3*x**2+12*x+8"  # Cambia esta ecuación según tus necesidades.
+    ecuacion = "x**3+3*x**2+12*x+8"  
     x0_aproximado = newton_raphson(ecuacion, 'x',-1)
     print(f"Aproximación de la raíz: {x0_aproximado:.6f}")
